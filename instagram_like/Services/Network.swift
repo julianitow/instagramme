@@ -21,7 +21,8 @@ class Network: ObservableObject {
             let jsonData = try JSONEncoder().encode(user)
             request.httpBody = jsonData
             request.addValue("Application/json", forHTTPHeaderField: "Content-Type")
-            let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let session = URLSession(configuration: .default)
+            let dataTask = session.dataTask(with: request) { (data, response, error) in
                 guard error == nil,
                       data != nil else {
                     return
@@ -48,7 +49,8 @@ class Network: ObservableObject {
             let jsonData = try JSONEncoder().encode(user)
             request.httpBody = jsonData
             request.addValue("Application/json", forHTTPHeaderField: "Content-Type")
-            let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let session = URLSession(configuration: .default)
+            let dataTask = session.dataTask(with: request) { (data, response, error) in
                 guard error == nil,
                       data != nil else {
                     return
